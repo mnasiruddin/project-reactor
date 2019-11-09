@@ -1,0 +1,10 @@
+server:
+  port: 8013
+spring:
+  application:
+    name: search-api
+  data:
+    mongodb:
+      database: assignment
+      host: mongodb
+      port: 27017

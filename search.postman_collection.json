@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "aff03278-b2ea-4c2e-95be-478b67bb6ea5",
+		"name": "search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\": \"mohammed\",\n\t\"surname\": \"nasir\",\n\t\"username\":\"nasiruddin1\",\n\t\"password\": \"password1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1147e964-68c4-4fb4-a252-ea83812e58c6",
+						"exec": [
+							"postman.setGlobalVariable(\"auth_token\",postman.getResponseHeader(\"Authorization\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic dXNlcjokMmEkMTAkbzQzR1FrZ1hiVTEuLnlMNEw2MDVQLmRSaVF5M0VyQXkyZWNmdlZ0UUVrbmxVRHdDcnVMVDI="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"nasiruddin1\",\n\t\"password\": \"password1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "session-name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYXNpcnVkZGluMSIsInJvbGUiOlsiVVNFUiJdLCJJREVOVElGSUVSIjoiMDkwZDQyZjAzN2Y3ZjZjOWJlZTk4NTNlYjYxNjhiZWFhNTYyMzRjZWZhZGY4M2IyMGU0YjQyNGVkODJiMTQ2ZCIsImV4cCI6MTU3MzI2OTQ3OX0.QG2pD3b-fYr4YZ7pnbL-N51mywWQKvfVGn0pQEk0IVo"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/session/name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"session",
+						"name"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "session-loggedin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/session/isLoggedIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"session",
+						"isLoggedIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtb2hhbW1lZG5hc2lyMTIzNSIsInJvbGUiOlsiVVNFUiJdLCJJREVOVElGSUVSIjoiZjI2OTBhNGJmMjJmZDM2NzY1NDMxMDIzYTRhNWQ5OGFiZDFiOGNmNDE4YzEwNzc1YjdkM2Y2ZTg1NWFhYTExZSIsImV4cCI6MTU2OTg1OTk1N30.gcJEHczn5Q15WS4CQ7G_1rE0YYLS0N6VEJduoJDy5vPQPld_SWPguDrvJF722cn7P18_W8s06HNnr0qqhQZ7DQ"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/oscar/search/23443",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"oscar",
+						"search",
+						"23443"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1147e964-68c4-4fb4-a252-ea83812e58c6",
+						"exec": [
+							"postman.setGlobalVariable(\"auth_token\",postman.getResponseHeader(\"Authorization\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"new title\",\n\t\"body\": \"this is bodys\",\n\t\"userId\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/posts/1?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"posts",
+						"1"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

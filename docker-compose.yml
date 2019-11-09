@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  mongodb:
+    image: mongo:4.0-xenial
+    ports:
+      - "27017:27017"
+
+  mongo_seed:
+    image: mongo:4.0-xenial
+    links:
+      - mongodb
+    volumes:
+      - ./data:/mongo-seed
+    command:
+      mongoimport --host mongodb --db assignment --collection oscarNominee --type json --file /mongo-seed/oscars/data_json.json --jsonArray
+
+  search-api:
+    container_name: search-api
+    build:
+      context: ./search-api
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - PORT=8080
+    links:
+      - mongodb
+    expose:
+      - "27017"
+    ports:
+      - "8080:8013"
+    volumes:
+      - ./search-api:/opt/app
